@@ -1,7 +1,7 @@
 from lib.tools import data
 class STOCKS():
     def __init__(self):
-        self.__stocks = data.get('DATA_TEMP/STOCKS')
+        self.__stocks = data.get('DATA/STOCKS')
 
     def getSymbols(self):
         symbols = list(self.__stocks.keys())
