@@ -25,7 +25,9 @@ class STOCKSGATHER():
         'trailingEPS': set(),
         'forwardEPS': set(),
     }
-    def __rebuildDatabase(self):
+
+    def __init__(self):
+
         # start database
         self.__stocks = {}
 
@@ -115,7 +117,7 @@ class STOCKSGATHER():
         # symbols = symbols.union(yahoofin.getSymbols())
         # symbols = list(symbols)
         # symbols.sort()
-        symbols = ['AAPL', 'VITAX', 'ANET', 'BBD', 'VZ', 'HHH']
+        # symbols = ['AAPL', 'VITAX', 'ANET', 'BBD', 'VZ', 'HHH']
 
         # get yfinance info
         # yfinance = scrape.YFINANCE(symbols=symbols, refresh=True)
@@ -529,7 +531,6 @@ class STOCKSGATHER():
         #             break
         #         # self.__stocks[symbol]['dividendRate'].add(quote['dividend'])
         # pp(paramsProduct)
-        data.save('DATA_TEMP/STOCKS', self.__stocks)
 
         # {'dateTime': '16:28:32 EDT 08-13-2024',
         #  'dateTimeUTC': 1723580912,
@@ -670,120 +671,5 @@ class STOCKSGATHER():
         #                                'salesDurationType': '',
         #                                'salesValues': []}},
         #  'Product': {'symbol': 'AABPX', 'securityType': 'MF'}}
-    def __init__(self, refresh=REFRESH):
-        if refresh:
-            self.__rebuildDatabase()
-        else:
-            self.__stocks = data.get('DATA_TEMP/STOCKS')
 
-    def getSymbols(self):
-        symbols = list(self.__stocks.keys())
-        symbols.sort()
-        return symbols
-
-    def getName(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['name']
-        else:
-            return None
-
-    def getType(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['type']
-        else:
-            return None
-    
-    def getSubType(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['subType']
-        else:
-            return None
-    
-    def getBusinessSummary(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['businessSummary']
-        else:
-            return None
-
-    def getExchange(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['exchange']
-        else:
-            return None
-
-    def getExchangeName(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['exchangeName']
-        else:
-            return None
-
-    def getSector(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['sector']
-        else:
-            return None
-
-    def getIndustry(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['industry']
-        else:
-            return None
-
-    def getCountry(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['country']
-        else:
-            return None
-
-    def getIndex(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['index']
-        else:
-            return None
-
-    def getYield(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['yield']
-        else:
-            return None
-
-    def getDividendYield(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['dividendYield']
-        else:
-            return None
-
-    def getDividendAnnual(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['dividendAnnual']
-        else:
-            return None
-
-    def getPreviousClose(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['previousClose']
-        else:
-            return None
-
-    def getTrailingPE(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['trailingPE']
-        else:
-            return None
-
-    def getForwardPE(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['forwardPE']
-        else:
-            return None
-    def getTrailingEPS(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['trailingEPS']
-        else:
-            return None
-
-    def getForwardEPS(self, symbol):
-        if symbol in self.__stocks:
-            return self.__stocks[symbol]['forwardEPS']
-        else:
-            return None
+        data.save('DATA/STOCKS', self.__stocks)
