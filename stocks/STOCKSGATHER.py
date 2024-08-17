@@ -128,7 +128,6 @@ class STOCKSGATHER():
                 self.__stocks[symbol] = deepcopy(self.__symbol)
             if 'info' in stockData:
                 info = stockData['info']
-                self.__stocks[symbol]['index'].add(index)
                 if 'longName' in info:
                     self.__stocks[symbol]['name'].add(info['longName'])
                 if 'quoteType' in info:
