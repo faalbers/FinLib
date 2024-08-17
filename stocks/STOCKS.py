@@ -114,3 +114,11 @@ class STOCKS():
             return self.__stocks[symbol]['forwardEPS']
         else:
             return None
+
+    def findDividendStocks(self):
+        for symbol, stockData in self.__stocks.items():
+            # if len(stockData['dividendYield']) > 0:
+            if symbol == 'BBD':
+                print(symbol)
+                print(stockData['dividendYield'])
+        return None
