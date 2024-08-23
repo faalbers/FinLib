@@ -8,6 +8,9 @@ from datetime import datetime
 import lib.etrade as etrade
 
 class REPORT():
+    def __getPOLYGONData(self):
+        pass
+
     def __getETRADEData(self):
         # get FMP data
         etData = self.__data['ETRADE'] = {'timeStamp': int((datetime.timestamp(datetime.now()))), 'data': {}}
